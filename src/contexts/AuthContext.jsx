@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
       }
     });
 
-    return () => {};
+    return () => unsubscribe(); // ✅ Properly unsubscribes on unmount
   }, []);
 
   const value = {
@@ -60,3 +60,6 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+// ✅ Now properly exported as default for potential consumption
+export default AuthProvider;
